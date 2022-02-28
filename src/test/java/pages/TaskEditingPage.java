@@ -46,7 +46,7 @@ public class TaskEditingPage extends BasePage {
         return driver.findElement(createSubtaskLinkSelector);
     }
 
-        public WebElement getAddSmthLink() {
+    public WebElement getAddSmthLink() {
         return driver.findElement(addSmthLinkSelector);
     }
 
