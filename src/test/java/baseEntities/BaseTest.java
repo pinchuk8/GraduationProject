@@ -2,11 +2,14 @@ package baseEntities;
 
 import core.BrowsersService;
 import core.ReadProperties;
+import enums.TypesOfTask;
+import models.Project;
+import models.Task;
+import models.User;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import utils.Listener;
+import utils.Randomization;
 import utils.Waits;
 
 @Listeners(Listener.class)
@@ -14,19 +17,39 @@ public class BaseTest {
     protected WebDriver driver;
     protected BrowsersService browsersService;
     protected Waits waits;
-   
+    protected Task addTask;
+    protected Project project;
+    protected User user;
+    protected Task updateTask;
 
-    @BeforeMethod
+    @BeforeTest
+    public void setUpData() {
+
+        user = new User.Builder()
+                .withUsername(ReadProperties.getUsername())
+                .withPassword(ReadProperties.getPassword())
+                .build();
+
+        project = new Project.Builder()
+                .withName(Randomization.getRandomString(5))
+                .build();
+
+        addTask = new Task.Builder()
+                .withSummary(Randomization.getRandomString(10))
+                .withDescription(Randomization.getRandomString(25))
+                .build();
+    }
+
+    @BeforeTest
     public void setUp() {
         browsersService = new BrowsersService();
         driver = browsersService.getDriver();
         waits = new Waits(driver);
 
-
         driver.get(ReadProperties.getUrl());
     }
 
-    @AfterMethod
+
     public void closePage() {
         driver.quit();
     }
