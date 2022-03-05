@@ -4,7 +4,6 @@ import baseEntities.BaseStep;
 import models.Project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import pages.ChooseProjectPage;
 import pages.Header;
 import pages.ProjectTypePage;
@@ -12,16 +11,13 @@ import pages.ProjectTypePage2;
 import utils.Randomization;
 
 public class ProjectStep extends BaseStep {
-    private ProjectTypePage projectTypePage;
-    public Project project=new Project.Builder()
-            .withName(Randomization.getRandomString(5))
-            .build();
+    private Header header;
 
     public ProjectStep(WebDriver driver) {
         super(driver);
     }
 
-    public void createProject() {
+    public void createProject(Project project) {
         Header header = new Header(driver);
         header.getProjectsButton().click();
         header.getCreateProjectButton().click();

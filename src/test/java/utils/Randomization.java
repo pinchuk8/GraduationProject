@@ -1,8 +1,12 @@
 package utils;
 
+import enums.TypesOfTask;
+import pages.AddTaskPage;
+
 import java.util.Random;
 
 public class Randomization {
+    private AddTaskPage addTaskPage;
 
     public static String getRandomString(int length) {
         int leftLimit = 97; // letter 'a'
@@ -24,8 +28,24 @@ public class Randomization {
         return rnd.nextInt(rightBound);
     }
 
-    public static int getRandomType() {
-        return (gerRandomInt(2) + 1);
+    public static TypesOfTask getRandomTaskType() {
+        Random rnd = new Random();
+        int a = rnd.nextInt(4);
+        switch (a) {
+            case 0:
+                return TypesOfTask.TASK;
+            case 1:
+                return TypesOfTask.IMPROVEMENT;
+            case 2:
+                return TypesOfTask.NEW_FEATURE;
+            case 3:
+                return TypesOfTask.BUG;
+            case 4:
+                return TypesOfTask.EPIC;
+            default:
+                System.out.println("Invalid task type");
+        }
+        return null;
     }
 }
 

@@ -6,10 +6,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AddTaskPage;
 import pages.ChooseProjectPage;
 import pages.Header;
 import pages.ProjectTypePage2;
+import steps.LoginStep;
 import steps.ProjectStep;
+import steps.TaskStep;
 
 public class SmokeTest extends BaseTest {
 
@@ -35,11 +38,25 @@ public class SmokeTest extends BaseTest {
         ChooseProjectPage chooseProjectPage=new ChooseProjectPage(driver);*/
         Header header = new Header(driver);
         header.getCreateButton().click();
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) driver;}
+    @Test
+    public void test() throws InterruptedException {
+        LoginStep loginStep = new LoginStep(driver);
+        loginStep.login();
+        ProjectStep projectStep = new ProjectStep(driver);
+        projectStep.createProject(project);
 
+        TaskStep taskStep = new TaskStep(driver);
+        taskStep.addTask(addTask);
 
+        AddTaskPage addTaskPage = new AddTaskPage(driver);
+        Thread.sleep(5000);
+        Assert.assertTrue(addTaskPage.getCreatedTaskMessage().isDisplayed());
 
-
-
+//        driver.navigate().refresh();
     }
+
+
+
+
 }
