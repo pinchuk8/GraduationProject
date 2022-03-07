@@ -2,16 +2,14 @@ package steps;
 
 import baseEntities.BaseStep;
 import models.Project;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.ChooseProjectPage;
 import pages.Header;
 import pages.ProjectTypePage;
 import pages.ProjectTypePage2;
 import utils.Randomization;
 
 public class ProjectStep extends BaseStep {
-    private Header header;
+    //private Header header;
 
     public ProjectStep(WebDriver driver) {
         super(driver);

@@ -8,6 +8,7 @@ import models.Task;
 import models.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+import steps.LoginStep;
 import utils.Listener;
 import utils.Randomization;
 import utils.Waits;
@@ -39,14 +40,19 @@ public class BaseTest {
                 .withDescription(Randomization.getRandomString(25))
                 .build();
     }
-
-    @BeforeTest
+   @BeforeMethod (dependsOnMethods = "setUp")
+    public void Login(){
+        LoginStep loginStep=new LoginStep(driver);
+        loginStep.login(user);
+    }
+    @BeforeMethod
     public void setUp() {
         browsersService = new BrowsersService();
         driver = browsersService.getDriver();
         waits = new Waits(driver);
         driver.get(ReadProperties.getUrl());
     }
+
 
     @AfterMethod
     public void closePage() {

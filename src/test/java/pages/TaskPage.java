@@ -1,4 +1,4 @@
-package pages;
+/*package pages;
 
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
@@ -111,4 +111,4 @@ public class TaskPage extends BasePage {
     public WebElement getTaskFind(String taskName) {
         return driver.findElement(By.xpath(taskFindSelector.replace("replace", String.valueOf(taskName))));
     }
-}
+}*/
