@@ -1,4 +1,4 @@
-package pages;
+/*package pages;
 
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
@@ -32,4 +32,4 @@ public class ChooseProjectPage extends BasePage {
     public WebElement getFindProject (String projectName) {
         return driver.findElement(By.xpath(findProjectSelector.replace("replace", String.valueOf(projectName))));
     }
-}
+}*/

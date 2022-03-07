@@ -5,6 +5,8 @@ import models.Task;
 import org.openqa.selenium.WebDriver;
 import pages.AddTaskPage;
 import pages.Header;
+import pages.TaskEditingPage;
+import pages.YouWorkPage;
 
 public class TaskStep extends BaseStep {
     private AddTaskPage addTaskPage;
@@ -15,17 +17,28 @@ public class TaskStep extends BaseStep {
     }
 
     public void addTask(Task addTask) throws InterruptedException {
-        header = new Header(driver);
-        header.getYourWorkDropDown().click();
-        header.getGoToWorkPageButton().click();
+        Header header = new Header(driver);
         header.getCreateButton().click();
-        addTaskPage = new AddTaskPage(driver);
-        addTaskPage.getTypeTaskDropDown().click();
-        addTaskPage.getBugTypeTask().click();
+        Thread.sleep(5000);
+        AddTaskPage addTaskPage = new AddTaskPage(driver);
         addTaskPage.getSummaryField().sendKeys(addTask.getSummary());
         Thread.sleep(5000);
         addTaskPage.getDescriptionField().sendKeys(addTask.getDescription());
+        Thread.sleep(5000);
         addTaskPage.getCreateButton().click();
+        Thread.sleep(5000);
     }
+
+    public void deleteTask(Task addTask) throws InterruptedException {
+        YouWorkPage youWorkPage = new YouWorkPage(driver);
+        youWorkPage.getViewIssue().click();
+        TaskEditingPage taskEditingPage = new TaskEditingPage(driver);
+        taskEditingPage.getSettingLink().click();
+        taskEditingPage.getDeleteTaskLink().click();
+        Thread.sleep(5000);
+        taskEditingPage.getDeleteTaskLink1().click();
+        youWorkPage.openPage();
+    }
+
 
 }
