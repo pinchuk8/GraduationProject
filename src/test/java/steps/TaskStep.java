@@ -4,7 +4,6 @@ import baseEntities.BaseStep;
 import models.Task;
 import org.openqa.selenium.WebDriver;
 import pages.AddTaskPage;
-import pages.ChooseProjectPage;
 import pages.Header;
 
 public class TaskStep extends BaseStep {
@@ -17,7 +16,9 @@ public class TaskStep extends BaseStep {
 
     public void addTask(Task addTask) throws InterruptedException {
         header = new Header(driver);
-        header.getCreateTaskButton().click();
+        header.getYourWorkDropDown().click();
+        header.getGoToWorkPageButton().click();
+        header.getCreateButton().click();
         addTaskPage = new AddTaskPage(driver);
         addTaskPage.getTypeTaskDropDown().click();
         addTaskPage.getBugTypeTask().click();

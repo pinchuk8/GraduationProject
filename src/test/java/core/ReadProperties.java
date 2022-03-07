@@ -39,4 +39,8 @@ public class ReadProperties {
     public static int getTimeOut() {
         return Integer.parseInt(properties.getProperty("timeout"));
     }
+
+    public static String getUrlApi() {
+        return properties.getProperty("urlApi");
+    }
 }
