@@ -19,14 +19,17 @@ public class TaskStep extends BaseStep {
     public void addTask(Task addTask) throws InterruptedException {
         Header header = new Header(driver);
         header.getCreateButton().click();
-        Thread.sleep(5000);
+    //  Thread.sleep(5000);
         AddTaskPage addTaskPage = new AddTaskPage(driver);
         addTaskPage.getSummaryField().sendKeys(addTask.getSummary());
-        Thread.sleep(5000);
+    //    Thread.sleep(5000);
+     //   waits.waitForVisibility(addTaskPage.getDescriptionField());
         addTaskPage.getDescriptionField().sendKeys(addTask.getDescription());
-        Thread.sleep(5000);
+    //    Thread.sleep(5000);
+      //  waits.waitForVisibility(addTaskPage.getCreateButton());
         addTaskPage.getCreateButton().click();
-        Thread.sleep(5000);
+
+    //    Thread.sleep(5000);
     }
 
     public void deleteTask(Task addTask) throws InterruptedException {
@@ -35,7 +38,7 @@ public class TaskStep extends BaseStep {
         TaskEditingPage taskEditingPage = new TaskEditingPage(driver);
         taskEditingPage.getSettingLink().click();
         taskEditingPage.getDeleteTaskLink().click();
-        Thread.sleep(5000);
+    //    waits.waitForVisibility(taskEditingPage.getDeleteTaskLink1());
         taskEditingPage.getDeleteTaskLink1().click();
         youWorkPage.openPage();
     }

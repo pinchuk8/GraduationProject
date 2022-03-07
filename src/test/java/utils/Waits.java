@@ -2,10 +2,15 @@ package utils;
 
 import core.ReadProperties;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public final class Waits {
     private WebDriver driver;
@@ -33,6 +38,13 @@ public final class Waits {
     }
 
     public WebElement waitForVisibility(By by) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+
+        //return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        Wait<WebDriver> fluent = new FluentWait<>(driver)
+                .withTimeout(12, SECONDS)
+                .pollingEvery(3, SECONDS)
+                .ignoring(NoSuchElementException.class);
+
+        return fluent.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 }

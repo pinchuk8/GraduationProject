@@ -8,4 +8,7 @@ public class Endpoints {
    public static final String  DELETE_PET_ID = "pet/{id}";
    public static final String  POST_CREATE_USER = "user";
    public static final String  GET_USER_NAME = "user/{username}";
+   public static final String  LOGIN_USER = "user/login";
+   public static final String  LOGOUT_USER = "user/logout";
+
 }

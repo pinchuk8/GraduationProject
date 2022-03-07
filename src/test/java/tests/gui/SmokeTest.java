@@ -59,9 +59,8 @@ public class SmokeTest extends BaseTest {
     public void dialogWindow() throws InterruptedException {
         Header header = new Header(driver);
         header.getCreateButton().click();
-        Thread.sleep(5000);
         AddTaskPage addTaskPage = new AddTaskPage(driver);
-        Assert.assertTrue(addTaskPage.getCreateButton().isDisplayed());
+        Assert.assertTrue(addTaskPage.getSummaryField().isDisplayed());
     }
 
 
@@ -88,7 +87,7 @@ public class SmokeTest extends BaseTest {
         Assert.assertTrue(projectTypePage2.getProjectCreateButton().isDisplayed());
     }*/
     @Test//ПРЕВЫШАЮЩИЙ ДОПУСТИМЫЕ
-    public void DataExceedingTheAllowable(){
+    public void DataExceedingTheAllowable() throws InterruptedException {
         Header header = new Header(driver);
         header.getCreateButton().click();
         AddTaskPage addTaskPage=new AddTaskPage(driver);
@@ -96,6 +95,5 @@ public class SmokeTest extends BaseTest {
         addTaskPage.getCreateButton().click();
         Assert.assertTrue(addTaskPage.getErrorMessageField().isDisplayed());
     }
-
 }
 

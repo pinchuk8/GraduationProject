@@ -3,7 +3,7 @@ package models;
 public class Pet {
    private String name;
    private String photoUrls;
-   private int id;
+   private long id;
    private String status;
 
    public static class Builder{
@@ -22,7 +22,7 @@ public class Pet {
            return this;
        }
 
-       public Builder withId(int id) {
+       public Builder withId(long id) {
            newPet.id = id;
            return this;
        }
@@ -45,7 +45,7 @@ public class Pet {
         return photoUrls;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

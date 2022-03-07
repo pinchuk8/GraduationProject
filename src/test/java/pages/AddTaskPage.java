@@ -43,8 +43,7 @@ public class AddTaskPage extends BasePage {
     }
 
     public WebElement getSummaryField()  {
-        WebDriverWait wait=new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(summaryFieldSelector));
+        waits.waitForVisibility(summaryFieldSelector);
         return driver.findElement(summaryFieldSelector);
         }
     public WebElement getErrorMessageField() {

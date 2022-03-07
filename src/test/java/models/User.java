@@ -6,7 +6,7 @@ public class User {
     @SerializedName("username")
     private String username;
     private String password;
-    private int id;
+    private String id;
     private String firstname;
     private String lastname;
     private String email;
@@ -30,7 +30,7 @@ public class User {
             return this;
         }
 
-        public Builder withId(int id) {
+        public Builder withId(String id) {
             newUser.id = id;
             return this;
         }
@@ -72,7 +72,7 @@ public class User {
         return password;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

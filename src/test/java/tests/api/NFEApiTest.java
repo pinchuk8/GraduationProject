@@ -12,23 +12,24 @@ import static io.restassured.RestAssured.given;
 
 public class NFEApiTest extends BaseApiTest {
     Gson gson = new Gson();
-    int petId = 10;
+    long petId;
 
     @Test
     public void addPetTest() {
         Pet pet = new Pet.Builder()
                 .withName("Vaska")
-                .withId(petId)
+                .withId(-1)
                 .withStatus("available")
                 .build();
 
-        given()
+       petId = given()
                 .body(pet, ObjectMapperType.GSON)
                 .when()
                 .post(Endpoints.POST_ADD_PET)
                 .then()
                 .log().body()
-                .statusCode(HttpStatus.SC_OK);
+                .statusCode(HttpStatus.SC_OK)
+               .extract().jsonPath().get("id");
     }
 
     @Test
@@ -36,17 +37,6 @@ public class NFEApiTest extends BaseApiTest {
         given()
                 .when()
                 .get(Endpoints.GET_PET_FIND_BY_STATUS_AVAIlABLE)
-                .then()
-                .log().body()
-                .statusCode(HttpStatus.SC_OK);
-    }
-
-    @Test(dependsOnMethods = "addPetTest")
-    public void getPetIdTest() {
-        given()
-                .pathParam("id", petId)
-                .when()
-                .get(Endpoints.GET_PET_ID)
                 .then()
                 .log().body()
                 .statusCode(HttpStatus.SC_OK);
