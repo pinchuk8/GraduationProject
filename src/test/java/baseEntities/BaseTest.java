@@ -23,8 +23,10 @@ public class BaseTest {
     protected User user;
     protected Task updateTask;
 
+
     @BeforeTest
     public void setUpData() {
+//        org.apache.log4j.BasicConfigurator.configure();
 
         user = new User.Builder()
                 .withUsername(ReadProperties.getUsername())
@@ -57,6 +59,10 @@ public class BaseTest {
     @AfterMethod
     public void closePage() {
         driver.quit();
+    }
+
+    public WebDriver getDriver() {
+        return driver;
     }
 }
 

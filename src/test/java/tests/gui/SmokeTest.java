@@ -86,6 +86,7 @@ public class SmokeTest extends BaseTest {
         ProjectTypePage2 projectTypePage2=new ProjectTypePage2(driver);
         Assert.assertTrue(projectTypePage2.getProjectCreateButton().isDisplayed());
     }*/
+
     @Test//ПРЕВЫШАЮЩИЙ ДОПУСТИМЫЕ
     public void DataExceedingTheAllowable() throws InterruptedException {
         Header header = new Header(driver);

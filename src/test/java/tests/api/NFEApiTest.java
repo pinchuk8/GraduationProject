@@ -57,8 +57,7 @@ public class NFEApiTest extends BaseApiTest {
                 .put(Endpoints.UPDATE_PET_ID)
                 .then()
                 .log().body()
-                .statusCode(HttpStatus.SC_OK);
-    }
+                .statusCode(HttpStatus.SC_OK);    }
 
     @Test(dependsOnMethods = "updatePetTest")
     public void deletePetTest() {

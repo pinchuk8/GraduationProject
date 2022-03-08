@@ -72,7 +72,7 @@ public class AFEApiTest extends BaseApiTest {
                 .get(Endpoints.LOGOUT_USER)
                 .then()
                 .log().body()
-                .statusCode(HttpStatus.SC_OK);
+                .statusCode(HttpStatus.SC_NOT_FOUND);
     }
 
     @Test

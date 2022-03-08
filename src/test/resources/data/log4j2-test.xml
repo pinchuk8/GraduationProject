@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration name="XMLConfigTest" strict="true" status="trace">
+<Configuration name="XMLConfigTest" strict="true" status="debug">
     <Properties>
         <Property name="filename">target/test.log</Property>
     </Properties>
