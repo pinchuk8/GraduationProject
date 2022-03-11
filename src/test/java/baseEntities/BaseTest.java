@@ -56,7 +56,7 @@ public class BaseTest {
     }
 
 
-    @AfterMethod
+//    @AfterMethod
     public void closePage() {
         driver.quit();
     }

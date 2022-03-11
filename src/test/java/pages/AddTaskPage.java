@@ -29,9 +29,6 @@ public class AddTaskPage extends BasePage {
         super(driver, openPageByUrl);
     }
 
-    public AddTaskPage() {
-    }
-
     @Override
     protected void openPage() {
         driver.get(BASE_URL + ENDPOINT);
@@ -80,11 +77,34 @@ public class AddTaskPage extends BasePage {
     protected By cancelButtonSelector = By.xpath("//*[@data-testid = 'issue-create.ui.modal.footer.cancel-button']");
 
     public WebElement getTypeTaskDropDown() {return driver.findElement(typeTaskDropDownSelector);    }
-    public WebElement getEpicTypeTask() {return driver.findElement(epicTypeTaskSelector);    }
-    public WebElement getBugTypeTask() {return driver.findElement(bugTypeTaskSelector);    }
-    public WebElement getImprovementTypeTask() {return driver.findElement(improvementTypeTaskSelector);    }
-    public WebElement getNewFeatureTypeTask() {return driver.findElement(newFeatureTypeTaskSelector);    }
-    public WebElement getTaskTypeTask() {return driver.findElement(taskTypeTaskSelector);    }
+
+    public WebElement getEpicTypeTask() { return driver.findElement(epicTypeTaskSelector);    }
+    public WebElement getBugTypeTask() { return driver.findElement(bugTypeTaskSelector);    }
+    public WebElement getImprovementTypeTask() { return driver.findElement(improvementTypeTaskSelector);    }
+    public WebElement getNewFeatureTypeTask() { return driver.findElement(newFeatureTypeTaskSelector);    }
+    public WebElement getTaskTypeTask() { return driver.findElement(taskTypeTaskSelector);    }
+
+    public void epicTypeTask() {
+        getEpicTypeTask().click();
+    }
+
+    public void bugTypeTask() {
+        getBugTypeTask().click();
+    }
+
+    public void improvementTypeTask() {
+        getImprovementTypeTask().click();
+    }
+
+    public void newFeatureTypeTask() {
+        getNewFeatureTypeTask().click();
+    }
+
+    public void taskTypeTask() {
+        getTaskTypeTask().click();
+    }
+
+
     public WebElement getTypeOfPriorityDropDown() {return driver.findElement(typeOfPriorityDropDownSelector);    }
     public WebElement getHighestPriority() {return driver.findElement(highestPrioritySelector);    }
     public WebElement getHighPriority() {return driver.findElement(highPrioritySelector);    }

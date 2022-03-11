@@ -66,16 +66,6 @@ public class AFEApiTest extends BaseApiTest {
     }
 
     @Test
-    public void getLogoutUserTest() {
-        given()
-                .when()
-                .get(Endpoints.LOGOUT_USER)
-                .then()
-                .log().body()
-                .statusCode(HttpStatus.SC_NOT_FOUND);
-    }
-
-    @Test
     public void addPetTest() {
         Pet pet = new Pet.Builder()
                 .withName("Vaska")

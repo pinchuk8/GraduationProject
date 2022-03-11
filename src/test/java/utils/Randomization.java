@@ -1,12 +1,13 @@
 package utils;
 
+import baseEntities.BasePage;
 import enums.TypesOfTask;
+import org.openqa.selenium.WebDriver;
 import pages.AddTaskPage;
 
 import java.util.Random;
 
 public class Randomization {
-    private AddTaskPage addTaskPage;
 
     public static String getRandomString(int length) {
         int leftLimit = 97; // letter 'a'
@@ -28,24 +29,26 @@ public class Randomization {
         return rnd.nextInt(rightBound);
     }
 
-    public static TypesOfTask getRandomTaskType() {
+    public static void getRandomTaskType() {
+        AddTaskPage addTaskPage = null;
         Random rnd = new Random();
         int a = rnd.nextInt(4);
         switch (a) {
             case 0:
-                return TypesOfTask.TASK;
+                addTaskPage.taskTypeTask();
+                break;
             case 1:
-                return TypesOfTask.IMPROVEMENT;
+                addTaskPage.improvementTypeTask();
+                break;
             case 2:
-                return TypesOfTask.NEW_FEATURE;
+                addTaskPage.newFeatureTypeTask();
+                break;
             case 3:
-                return TypesOfTask.BUG;
-            case 4:
-                return TypesOfTask.EPIC;
+                addTaskPage.bugTypeTask();
+                break;
             default:
                 System.out.println("Invalid task type");
         }
-        return null;
     }
 }
 
