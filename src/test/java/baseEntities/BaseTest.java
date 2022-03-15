@@ -2,7 +2,6 @@ package baseEntities;
 
 import core.BrowsersService;
 import core.ReadProperties;
-import enums.TypesOfTask;
 import models.Project;
 import models.Task;
 import models.User;

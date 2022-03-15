@@ -1,13 +1,13 @@
 package pages;
 
 import baseEntities.BasePage;
+import elements.DropDown;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Random;
 
 public class AddTaskPage extends BasePage {
     private static String ENDPOINT = "/jira/projects";
@@ -15,7 +15,7 @@ public class AddTaskPage extends BasePage {
 
     protected By summaryFieldSelector = By.xpath("//input[@name= 'summary']");
     protected By ErrorMessageSelector = By.xpath("//div[@id='summary-field-error']");
-    protected By descriptionFieldSelector =By.xpath("//*[@id = 'description-field-label']/../div//input/../following-sibling::div");
+    protected By descriptionFieldSelector = By.xpath("//*[@id = 'description-field-label']/../div//input/../following-sibling::div");
     protected By createButtonSelector = By.xpath("//*[@data-testid = 'issue-create.ui.modal.footer.create-button']");
 
     protected By downLoadButtonSelector1 = By.xpath("//span[text()='browse']");
@@ -39,24 +39,32 @@ public class AddTaskPage extends BasePage {
         return waits.waitForVisibility(PAGE_OPENED_IDENTIFIER).isDisplayed();
     }
 
-    public WebElement getSummaryField()  {
+    public WebElement getSummaryField() {
         waits.waitForVisibility(summaryFieldSelector);
         return driver.findElement(summaryFieldSelector);
-        }
+    }
+
     public WebElement getErrorMessageField() {
-         return waits.waitForVisibility(ErrorMessageSelector);}
+        return waits.waitForVisibility(ErrorMessageSelector);
+    }
+
     public WebElement getDescriptionField() {
-        return waits.waitForVisibility(descriptionFieldSelector);            }
+        return waits.waitForVisibility(descriptionFieldSelector);
+    }
+
     public WebElement getCreateButton() {/*WebDriverWait wait=new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(createButtonSelector));
         return driver.findElement(summaryFieldSelector);*/
         waits.waitForVisibility(createButtonSelector);
-        return driver.findElement(createButtonSelector);}
-    public WebElement getDownloadFileButton(){
+        return driver.findElement(createButtonSelector);
+    }
+
+    public WebElement getDownloadFileButton() {
         waits.waitForVisibility(downLoadButtonSelector);
         return driver.findElement(downLoadButtonSelector);
     }
-    public WebElement getDownloadFileButton1(){
+
+    public WebElement getDownloadFileButton1() {
         waits.waitForVisibility(downLoadButtonSelector1);
         return driver.findElement(downLoadButtonSelector1);
     }
@@ -68,7 +76,7 @@ public class AddTaskPage extends BasePage {
     protected By improvementTypeTaskSelector = By.xpath("//*[. = 'Improvement']");
     protected By newFeatureTypeTaskSelector = By.xpath("//*[. = 'New Feature']");
     protected By taskTypeTaskSelector = By.xpath("//*[. = 'Task']");
-    protected By typeOfPriorityDropDownSelector = By.xpath("//*[@id = 'priority-field-label']/..");
+    protected By typeOfPriorityDropDownSelector = By.xpath("//*[@id = 'priority-field-label']/../div/div/span/..");
     protected By highestPrioritySelector = By.xpath("//*[. = 'Highest']");
     protected By highPrioritySelector = By.xpath("//*[. = 'High']");
     protected By mediumPrioritySelector = By.xpath("//*[. = 'Medium']");
@@ -76,57 +84,72 @@ public class AddTaskPage extends BasePage {
     protected By lowestPrioritySelector = By.xpath("//*[. = 'Lowest']");
     protected By cancelButtonSelector = By.xpath("//*[@data-testid = 'issue-create.ui.modal.footer.cancel-button']");
 
-    public WebElement getTypeTaskDropDown() {return driver.findElement(typeTaskDropDownSelector);    }
-
-    public WebElement getEpicTypeTask() { return driver.findElement(epicTypeTaskSelector);    }
-    public WebElement getBugTypeTask() { return driver.findElement(bugTypeTaskSelector);    }
-    public WebElement getImprovementTypeTask() { return driver.findElement(improvementTypeTaskSelector);    }
-    public WebElement getNewFeatureTypeTask() { return driver.findElement(newFeatureTypeTaskSelector);    }
-    public WebElement getTaskTypeTask() { return driver.findElement(taskTypeTaskSelector);    }
-
-    public void epicTypeTask() {
-        getEpicTypeTask().click();
+    public DropDown getTypeTaskDropDown() {
+        return new DropDown(driver, typeTaskDropDownSelector);
     }
 
-    public void bugTypeTask() {
-        getBugTypeTask().click();
+    public WebElement getEpicTypeTask() {
+        return driver.findElement(epicTypeTaskSelector);
     }
 
-    public void improvementTypeTask() {
-        getImprovementTypeTask().click();
+    public WebElement getBugTypeTask() {
+        return driver.findElement(bugTypeTaskSelector);
     }
 
-    public void newFeatureTypeTask() {
-        getNewFeatureTypeTask().click();
+    public WebElement getImprovementTypeTask() {
+        return driver.findElement(improvementTypeTaskSelector);
     }
 
-    public void taskTypeTask() {
-        getTaskTypeTask().click();
+    public WebElement getNewFeatureTypeTask() {
+        return driver.findElement(newFeatureTypeTaskSelector);
+    }
+
+    public WebElement getTaskTypeTask() {
+        return driver.findElement(taskTypeTaskSelector);
+    }
+
+    public DropDown getTypeOfPriorityDropDown() {
+        return new DropDown(driver, typeOfPriorityDropDownSelector);
+    }
+
+    public WebElement getHighestPriority() {
+        return driver.findElement(highestPrioritySelector);
+    }
+
+    public WebElement getHighPriority() {
+        return driver.findElement(highPrioritySelector);
+    }
+
+    public WebElement getMediumPriority() {
+        return driver.findElement(mediumPrioritySelector);
+    }
+
+    public WebElement getLowPriority() {
+        return driver.findElement(lowPrioritySelector);
+    }
+
+    public WebElement getLowestPriority() {
+        return driver.findElement(lowestPrioritySelector);
+    }
+
+    public WebElement getCancelButton() {
+        return driver.findElement(cancelButtonSelector);
     }
 
 
-    public WebElement getTypeOfPriorityDropDown() {return driver.findElement(typeOfPriorityDropDownSelector);    }
-    public WebElement getHighestPriority() {return driver.findElement(highestPrioritySelector);    }
-    public WebElement getHighPriority() {return driver.findElement(highPrioritySelector);    }
-    public WebElement getMediumPriority() {return driver.findElement(mediumPrioritySelector);    }
-    public WebElement getLowPriority() {return driver.findElement(lowPrioritySelector);    }
-    public WebElement getLowestPriority() {return driver.findElement(lowestPrioritySelector);    }
-    public WebElement getCancelButton() {return driver.findElement(cancelButtonSelector);    }
-
-
-    public void scrollToElement () throws InterruptedException {
-    JavascriptExecutor js = (JavascriptExecutor) driver;
+    public void scrollToElement() throws InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         ((JavascriptExecutor) driver)
                 // .executeScript("arguments[0].scrollIntoView(true);",getDownloadFileButton().sendKeys("C:\Users\Ольга Пинчук\Desktop\DGKsFOrTvVM (1).jpg)");
-            .executeScript("arguments[0].scrollIntoView(true);",getDownloadFileButton1());
+                .executeScript("arguments[0].scrollIntoView(true);", getDownloadFileButton1());
         //Thread.sleep(10000);
         // getDownloadFileButton().sendKeys("C:\\Users\\Desktop\\picture.png");
-      //  getDownloadFileButton().sendKeys("\u202AC:\\Users\\user\\Desktop\\picture2.jpg");
+        //  getDownloadFileButton().sendKeys("\u202AC:\\Users\\user\\Desktop\\picture2.jpg");
         //getDownloadFileButton().sendKeys("C:\\Users\\user\\Desktop\\picture2.jpg");
         //getDownloadFileButton().click();
 
-       // JavascriptExecutor js2 = (JavascriptExecutor) driver;
-       // js2.executeScript("getDownloadFileButton.sendKeys('C:\\Users\\user\\Desktop\\picture2.jpg');", getDownloadFileButton());
+        // JavascriptExecutor js2 = (JavascriptExecutor) driver;
+        // js2.executeScript("getDownloadFileButton.sendKeys('C:\\Users\\user\\Desktop\\picture2.jpg');", getDownloadFileButton());
         //js2.executeScript("getDownloadFileButton().value='C:\\Users\\user\\Desktop\\picture2.jpg';");
         /*Actions actions=new Actions(driver);
         actions
@@ -137,7 +160,7 @@ public class AddTaskPage extends BasePage {
         //actions.keyDown(getDownloadFileButton(),"C:\\Users\\user\\Desktop\\picture2.jpg");
         //Thread.sleep(100000);
 
-       // getDownloadFileButton().sendKeys("C:\\Users\\Рабочий стол\\picture.png");
+        // getDownloadFileButton().sendKeys("C:\\Users\\Рабочий стол\\picture.png");
         //Thread.sleep(10000);
        /* getDownloadFileButton().sendKeys("C:\\Users\\Desktop\\picture.png");
         Thread.sleep(5000);
@@ -145,5 +168,51 @@ public class AddTaskPage extends BasePage {
         driver.findElement(By.cssSelector("Кнопка старта загрузки")).click();
         wait.until(ExpectedConditions.invisibilityOf(loader));*/
 
+    }
+
+
+    public void taskType() {
+        Random rnd = new Random();
+        int a = rnd.nextInt(4);
+        switch (a) {
+            case 0:
+                getTaskTypeTask().click();
+                break;
+            case 1:
+                getBugTypeTask().click();
+                break;
+            case 2:
+                getImprovementTypeTask().click();
+                break;
+            case 3:
+                getNewFeatureTypeTask().click();
+                break;
+            default:
+                System.out.println("Invalid task type");
+        }
+    }
+
+    public void priorityType() {
+        Random rnd = new Random();
+        int a = rnd.nextInt(5);
+        switch (a) {
+            case 0:
+                getHighestPriority().click();
+                break;
+            case 1:
+                getHighPriority().click();
+                break;
+            case 2:
+                getMediumPriority().click();
+                break;
+            case 3:
+                getLowPriority().click();
+                break;
+            case 4:
+                getLowestPriority().click();
+                break;
+            default:
+                System.out.println("Invalid priority type");
+        }
     }
 }

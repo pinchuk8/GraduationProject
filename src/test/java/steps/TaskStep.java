@@ -1,21 +1,18 @@
 package steps;
 
 import baseEntities.BaseStep;
-import enums.TypesOfTask;
 import models.Task;
 import org.openqa.selenium.WebDriver;
 import pages.AddTaskPage;
 import pages.Header;
 import pages.TaskEditingPage;
 import pages.YouWorkPage;
-import utils.Randomization;
 
 public class TaskStep extends BaseStep {
     private AddTaskPage addTaskPage;
     private Header header;
     private YouWorkPage youWorkPage;
     private TaskEditingPage taskEditingPage;
-    private TypesOfTask typesOfTask;
 
     public TaskStep(WebDriver driver) {
         super(driver);
@@ -26,10 +23,11 @@ public class TaskStep extends BaseStep {
         header.getCreateButton().click();
         addTaskPage = new AddTaskPage(driver);
         addTaskPage.getTypeTaskDropDown().click();
-//        addTaskPage.epicTypeTask();
-        Randomization.getRandomTaskType();
+        addTaskPage.taskType();
         addTaskPage.getSummaryField().sendKeys(addTask.getSummary());
         addTaskPage.getDescriptionField().sendKeys(addTask.getDescription());
+        addTaskPage.getTypeOfPriorityDropDown().click();
+        addTaskPage.priorityType();
         addTaskPage.getCreateButton().click();
     }
 

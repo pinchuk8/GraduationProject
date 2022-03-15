@@ -1,6 +1,5 @@
 package models;
 
-import enums.TypesOfTask;
 
 public class Task {
     private String summary;
