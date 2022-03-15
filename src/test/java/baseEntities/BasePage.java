@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import utils.Waits;
 
 public abstract class BasePage {
-    protected static final int WAIT_FOR_PAGE_LOADED_IN_SECONDS = 30;
+    protected static final int WAIT_FOR_PAGE_LOADED_IN_SECONDS = 40;
 
     protected WebDriver driver;
     protected String BASE_URL;
@@ -15,7 +15,6 @@ public abstract class BasePage {
     public BasePage(WebDriver driver) {
         this(driver, false);
     }
-
     public BasePage(WebDriver driver, boolean openPageByUrl) {
         this.driver = driver;
         this.waits = new Waits(driver);
@@ -25,9 +24,6 @@ public abstract class BasePage {
             openPage();
         }
         waitForOpen();
-    }
-
-    protected BasePage() {
     }
 
     protected abstract void openPage();

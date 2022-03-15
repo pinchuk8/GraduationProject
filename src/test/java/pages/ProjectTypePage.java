@@ -8,8 +8,9 @@ import org.openqa.selenium.WebElement;
 public class ProjectTypePage extends BasePage {
     private static String ENDPOINT = "/jira/your-work";
     private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//div[@class='sc-3la0sj-2 ghEtRS']");
+
     protected By useBagTracking_button_selector = By.xpath("//span[@aria-label='Bug tracking']");
-    protected By useTemplate_button_selector = By.xpath("//button[@class='css-wbe0z8']");
+    protected By useTemplate_button_selector = By.xpath("//button[@class='css-goggrm']");
 
     public ProjectTypePage(WebDriver driver) {
         super(driver);

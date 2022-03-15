@@ -15,11 +15,12 @@ public class ReadProperties {
             e.printStackTrace();
         }
     }
-    
+
 
     public static String getUrl() {
         return properties.getProperty("url");
     }
+
     public static String getLogin_Url() {
         return properties.getProperty("login_url");
     }
@@ -42,5 +43,9 @@ public class ReadProperties {
 
     public static int getTimeOut() {
         return Integer.parseInt(properties.getProperty("timeout"));
+    }
+
+    public static String getUrlApi() {
+        return properties.getProperty("urlApi");
     }
 }

@@ -4,37 +4,44 @@ import baseEntities.BaseStep;
 import models.Task;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import pages.*;
+import pages.AddTaskWindow;
+import pages.Header;
+import pages.SearchPage;
+import pages.TaskEditingPage;
 
 public class TaskStep extends BaseStep {
-    private AddTaskWindow addTaskPage;
+    private AddTaskWindow addTaskWindow;
+    private SearchPage searchPage;
     private Header header;
+    private TaskEditingPage taskEditingPage;
 
     public TaskStep(WebDriver driver) {
         super(driver);
     }
 
-    public void addTask(Task addTask)  {
-        Header header = new Header(driver);
+    public void addTask(Task addTask) {
+        header = new Header(driver);
         header.getCreateButton().click();
-        AddTaskWindow addTaskPage = new AddTaskWindow(driver);
-        addTaskPage.getSummaryField().sendKeys(addTask.getSummary());
-        addTaskPage.getDescriptionField().sendKeys(addTask.getDescription());
-        addTaskPage.getCreateButton().click();
+        addTaskWindow = new AddTaskWindow(driver);
+        addTaskWindow.getTypeTaskDropDown().click();
+        addTaskWindow.taskType();
+        addTaskWindow.getSummaryField().sendKeys(addTask.getSummary());
+        addTaskWindow.getDescriptionField().sendKeys(addTask.getDescription());
+        addTaskWindow.getTypeOfPriorityDropDown().click();
+        addTaskWindow.priorityType();
+        addTaskWindow.getCreateButton().click();
     }
 
-    public void deleteTask(Task addTask){
-        Header header = new Header(driver);
+    public void deleteTask(Task addTask) {
+        header = new Header(driver);
         header.getSearchField().click();
         header.getSearchField().sendKeys(addTask.getSummary());
         header.getSearchField().sendKeys(Keys.ENTER);
-        SearchPage searchPage=new SearchPage(driver);
+        searchPage = new SearchPage(driver);
         searchPage.getNessesaryTaskSelector(addTask).click();
-        TaskEditingPage taskEditingPage = new TaskEditingPage(driver);
+        taskEditingPage = new TaskEditingPage(driver);
         taskEditingPage.getSettingLink().click();
         taskEditingPage.getDeleteTaskLink().click();
         taskEditingPage.getDeleteTaskLink1().click();
     }
-
-
 }

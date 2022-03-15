@@ -7,9 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class SearchPage extends BasePage {
+    private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//h1[@class='search-title']");
+
     @Override
     protected void openPage() {
-
     }
 
     @Override
@@ -21,14 +22,7 @@ public class SearchPage extends BasePage {
         super(driver);
     }
 
-    private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//h1[@class='search-title']");
-
-
-
-
-    public WebElement getNessesaryTaskSelector(Task task){
-       /// waits.waitForVisibility(By.xpath(a.replace("replace",task.getSummary().toString())));
-        return driver.findElement(By.xpath("//a[text()='replace']".replace("replace",task.getSummary())));
+    public WebElement getNessesaryTaskSelector(Task task) {
+        return driver.findElement(By.xpath("//a[text()='replace']".replace("replace", task.getSummary())));
     }
-
 }

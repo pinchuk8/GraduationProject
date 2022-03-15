@@ -10,8 +10,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public final class Waits {
@@ -29,25 +27,29 @@ public final class Waits {
     }
 
     public boolean waitForVisibility(WebElement element) {
-        return wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
+        Wait<WebDriver> fluent = new FluentWait<>(driver)
+                .withTimeout(30, SECONDS)
+                .pollingEvery(5, SECONDS)
+                .ignoring(NoSuchElementException.class);
+
+        return fluent.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
     }
 
-    public boolean waitForInvisibility(WebElement element) {
-        return wait.until(ExpectedConditions.invisibilityOf(element));
+    public WebElement waitForClickable(WebElement webElement) {
+        Wait<WebDriver> fluent = new FluentWait<>(driver)
+                .withTimeout(30, SECONDS)
+                .pollingEvery(5, SECONDS)
+                .ignoring(NoSuchElementException.class);
+
+        return fluent.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
-    /*public WebElement waitForVisibility(By by) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-    }*/
-    public WebElement waitForVisibility (By by) {
+    public WebElement waitForVisibility(By by) {
         Wait<WebDriver> fluent = new FluentWait<>(driver)
                 .withTimeout(30, SECONDS)
                 .pollingEvery(5, SECONDS)
                 .ignoring(NoSuchElementException.class);
 
         return fluent.until(ExpectedConditions.visibilityOfElementLocated(by));
-    }
-    public WebElement waitForClickable(WebElement webElement) {
-        return wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 }

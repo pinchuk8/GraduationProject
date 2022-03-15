@@ -23,19 +23,20 @@ public class BaseTest {
     protected User user;
     protected Task updateTask;
 
-    protected DataBaseService dataBaseService;
-    @BeforeTest
-    public void setUpConnection(){
-        org.apache.log4j.BasicConfigurator.configure();
-        dataBaseService=new DataBaseService();
-    }
-    @AfterTest
-    public void closeConnection(){
-        dataBaseService.closeConnection();
-    }
+    // protected DataBaseService dataBaseService;
+
+//    @BeforeTest
+//    public void setUpConnection(){
+//        org.apache.log4j.BasicConfigurator.configure();
+//        dataBaseService=new DataBaseService();
+//    }
+//    @AfterTest
+//    public void closeConnection(){
+//        dataBaseService.closeConnection();
+//    }
+
     @BeforeTest
     public void setUpData() {
-
         user = new User.Builder()
                 .withUsername(ReadProperties.getUsername())
                 .withPassword(ReadProperties.getPassword())
@@ -50,11 +51,13 @@ public class BaseTest {
                 .withDescription(Randomization.getRandomString(25))
                 .build();
     }
-   @BeforeMethod (dependsOnMethods = "setUp")
-    public void Login()  {
-        LoginStep loginStep=new LoginStep(driver);
+
+    @BeforeMethod(dependsOnMethods = "setUp")
+    public void Login() {
+        LoginStep loginStep = new LoginStep(driver);
         loginStep.login(user);
     }
+
     @BeforeMethod
     public void setUp() {
         browsersService = new BrowsersService();
@@ -62,9 +65,14 @@ public class BaseTest {
         waits = new Waits(driver);
         driver.get(ReadProperties.getUrl());
     }
+
     @AfterMethod
     public void closePage() {
         driver.quit();
+    }
+
+    public WebDriver getDriver() {
+        return driver;
     }
 }
 

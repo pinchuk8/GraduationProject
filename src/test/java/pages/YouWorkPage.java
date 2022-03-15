@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 public class YouWorkPage extends BasePage {
     private static String ENDPOINT = "/jira/your-work";
     private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//span[text()='Create']");
+
     protected By createdTaskMessageSelector = By.xpath("//*[contains(text(), 've created')]");
     protected By viewIssueSelector = By.xpath("//*[contains(text(), 'View issue')]");
     protected By nessesaryTaskSelector = By.xpath("//span[@class='seye2t-6 ejpKgl']");
@@ -30,12 +31,15 @@ public class YouWorkPage extends BasePage {
         super(driver, openPageByUrl);
     }
 
-    public WebElement getCreateTaskMessage()  {
+    public WebElement getCreateTaskMessage() {
         return waits.waitForVisibility(createdTaskMessageSelector);
     }
 
-   public WebElement getNessesaryTask() {
-        return waits.waitForVisibility(nessesaryTaskSelector);}
+    public WebElement getNessesaryTask() {
+        return waits.waitForVisibility(nessesaryTaskSelector);
+    }
+
     public WebElement getViewIssue() {
-        return waits.waitForVisibility(viewIssueSelector);}
+        return waits.waitForVisibility(viewIssueSelector);
+    }
 }

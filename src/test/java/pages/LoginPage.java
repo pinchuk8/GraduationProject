@@ -7,16 +7,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
     private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//input[@name= 'username']");
+
     protected By login_field_selector = By.xpath("//input[@name= 'username']");
     protected By password_field_selector = By.xpath("//input[@name= 'password']");
     protected By login_button_selector = By.xpath("//button[@class= 'css-siava9']");
 
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
     @Override
     protected void openPage() {
@@ -31,7 +30,12 @@ public class LoginPage extends BasePage {
     public WebElement getLoginField() {
         return driver.findElement(login_field_selector);
     }
+
     public WebElement getPasswordField() {
-        return waits.waitForVisibility(password_field_selector);}
-    public WebElement getLoginButton() {return waits.waitForVisibility(login_button_selector);}
+        return waits.waitForVisibility(password_field_selector);
+    }
+
+    public WebElement getLoginButton() {
+        return waits.waitForVisibility(login_button_selector);
+    }
 }
