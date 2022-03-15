@@ -34,10 +34,12 @@ public class ProjectTypePage2 extends BasePage {
     }
 
     public WebElement getProjectNameField() {
+        waits.waitForVisibility(projectName_field_selector);
         return driver.findElement(projectName_field_selector);
     }
 
     public WebElement getProjectKeyField() {
+        waits.waitForVisibility(projectKey_field_selector);
         return driver.findElement(projectKey_field_selector);
     }
 

@@ -1,12 +1,12 @@
 package utils;
 
-import enums.TypesOfTask;
-import pages.AddTaskPage;
+
+import pages.AddTaskWindow;
 
 import java.util.Random;
 
 public class Randomization {
-    private AddTaskPage addTaskPage;
+    private AddTaskWindow addTaskPage;
 
     public static String getRandomString(int length) {
         int leftLimit = 97; // letter 'a'
@@ -28,7 +28,7 @@ public class Randomization {
         return rnd.nextInt(rightBound);
     }
 
-    public static TypesOfTask getRandomTaskType() {
+   /* public static TypesOfTask getRandomTaskType() {
         Random rnd = new Random();
         int a = rnd.nextInt(4);
         switch (a) {
@@ -46,6 +46,6 @@ public class Randomization {
                 System.out.println("Invalid task type");
         }
         return null;
-    }
+    }*/
 }
 

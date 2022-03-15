@@ -10,14 +10,14 @@ public class LoginStep extends BaseStep {
         super(driver);
     }
 
-    public void login(User user) {
+    public void login(User user)  {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.getLoginField().click();
         loginPage.getLoginField().sendKeys(user.getUsername());
         loginPage.getLoginButton().isDisplayed();
         loginPage.getLoginButton().click();
+        loginPage.getPasswordField().isDisplayed();
         loginPage.getPasswordField().sendKeys(user.getPassword());
         loginPage.getLoginButton().click();
-
     }
 }

@@ -1,11 +1,11 @@
 package models;
 
-import enums.TypesOfTask;
+//import enums.TypesOfTask;
 
 public class Task {
     private String summary;
     private String description;
-    private TypesOfTask typeOfTask;
+   // private TypesOfTask typeOfTask;
 
     public static class Builder{
         private Task newTask;
@@ -24,10 +24,10 @@ public class Task {
             return this;
         }
 
-        public Builder withTypeOfTask(TypesOfTask typeOfTask) {
-            newTask.typeOfTask = typeOfTask;
-            return this;
-        }
+//        public Builder withTypeOfTask(TypesOfTask typeOfTask) {
+//            newTask.typeOfTask = typeOfTask;
+//            return this;
+//        }
 
         public Task build() {
             return newTask;
@@ -42,7 +42,7 @@ public class Task {
         return description;
     }
 
-    public TypesOfTask getTypeOfTask() {
-        return typeOfTask;
-    }
+//    public TypesOfTask getTypeOfTask() {
+//        return typeOfTask;
+//    }
 }

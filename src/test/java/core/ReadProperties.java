@@ -15,9 +15,13 @@ public class ReadProperties {
             e.printStackTrace();
         }
     }
+    
 
     public static String getUrl() {
         return properties.getProperty("url");
+    }
+    public static String getLogin_Url() {
+        return properties.getProperty("login_url");
     }
 
     public static String getBrowserName() {

@@ -1,8 +1,8 @@
 package baseEntities;
 
 import core.BrowsersService;
+import core.DataBaseService;
 import core.ReadProperties;
-import enums.TypesOfTask;
 import models.Project;
 import models.Task;
 import models.User;
@@ -23,6 +23,16 @@ public class BaseTest {
     protected User user;
     protected Task updateTask;
 
+    protected DataBaseService dataBaseService;
+    @BeforeTest
+    public void setUpConnection(){
+        org.apache.log4j.BasicConfigurator.configure();
+        dataBaseService=new DataBaseService();
+    }
+    @AfterTest
+    public void closeConnection(){
+        dataBaseService.closeConnection();
+    }
     @BeforeTest
     public void setUpData() {
 
@@ -41,7 +51,7 @@ public class BaseTest {
                 .build();
     }
    @BeforeMethod (dependsOnMethods = "setUp")
-    public void Login(){
+    public void Login()  {
         LoginStep loginStep=new LoginStep(driver);
         loginStep.login(user);
     }
@@ -52,8 +62,6 @@ public class BaseTest {
         waits = new Waits(driver);
         driver.get(ReadProperties.getUrl());
     }
-
-
     @AfterMethod
     public void closePage() {
         driver.quit();

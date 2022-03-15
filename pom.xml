@@ -14,7 +14,6 @@
         <aspectj.version>1.9.6</aspectj.version>
     </properties>
 <dependencies>
-
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
