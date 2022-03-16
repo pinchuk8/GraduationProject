@@ -28,7 +28,7 @@ public class SmokeTest extends BaseTest {
     }
 
     @Test//ЗАГРУЗКА ФАЙЛА
-    public void UploadFileTest() throws InterruptedException {
+    public void UploadFileTest() {
         Header header = new Header(driver);
         header.getCreateButton().click();
         AddTaskWindow addTaskWindow = new AddTaskWindow(driver);
@@ -40,7 +40,7 @@ public class SmokeTest extends BaseTest {
     }
 
     @Test//СОЗДАНИЕ ЗАДАЧИ
-    public void createTask() throws InterruptedException {
+    public void createTask() {
         TaskStep taskStep = new TaskStep(driver);
         taskStep.addTask(addTask);
         YouWorkPage youWorkPage = new YouWorkPage(driver);
