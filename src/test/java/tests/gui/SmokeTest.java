@@ -32,12 +32,10 @@ public class SmokeTest extends BaseTest {
         Header header = new Header(driver);
         header.getCreateButton().click();
         AddTaskWindow addTaskWindow = new AddTaskWindow(driver);
-        Thread.sleep(10000);
         addTaskWindow.getImportIssues().click();
         DownLoadPage downLoadPage = new DownLoadPage(driver);
         File file = new File("src\\test\\resources\\picture.png");
         downLoadPage.getDownloadButton().sendKeys(file.getAbsolutePath());
-        Thread.sleep(10000);
         waits.waitForClickable(downLoadPage.getNextButton());
     }
 
@@ -65,8 +63,8 @@ public class SmokeTest extends BaseTest {
         Assert.assertTrue(addTaskWindow.getCreateButton().isDisplayed());
     }
 
-    @Test(retryAnalyzer = Retry.class, dependsOnMethods = "createTask")//УДАЛЕНИЕ ЗАДАЧИ
-    public void DeleteTask() throws InterruptedException {
+    @Test(retryAnalyzer = Retry.class)//УДАЛЕНИЕ ЗАДАЧИ
+    public void DeleteTask() {
         TaskStep taskStep = new TaskStep(driver);
         taskStep.deleteTask(addTask);
         YouWorkPage youWorkPage = new YouWorkPage(driver);
