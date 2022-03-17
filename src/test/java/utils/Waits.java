@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public final class Waits {
@@ -27,29 +29,30 @@ public final class Waits {
     }
 
     public boolean waitForVisibility(WebElement element) {
-        Wait<WebDriver> fluent = new FluentWait<>(driver)
-                .withTimeout(30, SECONDS)
-                .pollingEvery(5, SECONDS)
+
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
                 .ignoring(NoSuchElementException.class);
 
-        return fluent.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
+        return wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
     }
 
     public WebElement waitForClickable(WebElement webElement) {
-        Wait<WebDriver> fluent = new FluentWait<>(driver)
-                .withTimeout(30, SECONDS)
-                .pollingEvery(5, SECONDS)
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
                 .ignoring(NoSuchElementException.class);
 
-        return fluent.until(ExpectedConditions.elementToBeClickable(webElement));
+        return wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public WebElement waitForVisibility(By by) {
-        Wait<WebDriver> fluent = new FluentWait<>(driver)
-                .withTimeout(30, SECONDS)
-                .pollingEvery(5, SECONDS)
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
                 .ignoring(NoSuchElementException.class);
 
-        return fluent.until(ExpectedConditions.visibilityOfElementLocated(by));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 }
