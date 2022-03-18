@@ -11,7 +11,7 @@ import java.util.Random;
 public class AddTaskWindow extends BasePage {
     private static String ENDPOINT = "/jira/projects";
 
-    private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//*[@class = 'css-1aseh1t e1rcei0k1']");
+    private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//*[@id = 'issue-create.ui.modal.modal-body']");
 
     protected By summaryFieldSelector = By.xpath("//input[@name= 'summary']");
     protected By ErrorMessageSelector = By.xpath("//div[@id='summary-field-error']");

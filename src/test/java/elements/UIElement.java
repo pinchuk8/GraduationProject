@@ -29,6 +29,7 @@ public class UIElement implements WebElement {
     @Override
     public void click() {
         try {
+            waits.waitForClickable(webElement);
             webElement.click();
         } catch (ElementNotVisibleException ex) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);

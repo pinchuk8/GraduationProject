@@ -1,6 +1,5 @@
 package steps;
 
-import baseEntities.BaseTest;
 import core.BrowsersService;
 import core.DataBaseService;
 import core.ReadProperties;
@@ -15,11 +14,11 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import models.Task;
 import models.User;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.log4testng.Logger;
 import pages.*;
 import utils.Randomization;
 import utils.Waits;
@@ -35,6 +34,8 @@ public class CucumberTestDef {
     private DataBaseService dataBaseService;
     private Task addTask;
 
+    public  static Logger logger = Logger.getLogger(CucumberTestDef.class);
+
     @Step
     @Given("set up connection")
     public void setUpConnection(){
@@ -48,6 +49,8 @@ public class CucumberTestDef {
         driver = new BrowsersService().getDriver();
         waits = new Waits(driver);
         driver.get(ReadProperties.getUrl());
+
+        logger.info("browser is started");
     }
 
     @Step
@@ -73,6 +76,8 @@ public class CucumberTestDef {
                 .build();
         LoginStep loginStep = new LoginStep(driver);
         loginStep.login(user);
+
+        logger.info("user logged in");
     }
 
     @Step
@@ -80,12 +85,13 @@ public class CucumberTestDef {
     public void createProject() {
         ProjectStep projectStep = new ProjectStep(driver);
         projectStep.createProject();
+
+        logger.info("create project");
     }
 
     @Step
     @And("create the task")
     public void createdTask() {
-        Logger logger = Logger.getLogger(CucumberTestDef.class);
         TaskTable descriptionTable = new TaskTable(dataBaseService);
 
         descriptionTable.dropTable(dataBaseService);
@@ -123,6 +129,8 @@ public class CucumberTestDef {
     public void deleteTheTask() {
         TaskStep taskStep = new TaskStep(driver);
         taskStep.deleteTask(addTask);
+
+        logger.info("task deleted");
     }
 
     @Step
@@ -161,8 +169,10 @@ public class CucumberTestDef {
         ProjectTypePage2 projectTypePage2 = new ProjectTypePage2(driver);
         if (size <= 1 || size >= 81) {
             Assert.assertTrue(projectTypePage2.getWarningMessenger().isDisplayed());
+            logger.info("invalid value");
         } else {
             Assert.assertTrue(projectTypePage2.getProjectCreateButton().isDisplayed());
+            logger.info("appropriate value");
         }
     }
 
@@ -180,7 +190,7 @@ public class CucumberTestDef {
         waits.waitForClickable(addTaskWindow.getImportIssues());
         addTaskWindow.getImportIssues().click();
         DownLoadPage downLoadPage = new DownLoadPage(driver);
-        File file = new File("src\\test\\resources\\picture.png");
+        File file = new File("src\\test\\resources\\data\\picture.png");
         downLoadPage.getDownloadButton().sendKeys(file.getAbsolutePath());
         Assert.assertTrue(downLoadPage.getNextButton().isDisplayed());
     }

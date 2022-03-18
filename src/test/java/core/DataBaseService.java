@@ -1,6 +1,6 @@
 package core;
 
-import org.apache.log4j.Logger;
+import org.testng.log4testng.Logger;
 
 import java.sql.*;
 
@@ -42,7 +42,6 @@ public class DataBaseService {
         } catch (SQLException e) {
             logger.info(e.toString());
         }
-
         return statement;
     }
 
@@ -60,7 +59,6 @@ public class DataBaseService {
         } catch (SQLException e) {
             logger.info(e.toString());
         }
-
         return null;
     }
 
@@ -80,8 +78,6 @@ public class DataBaseService {
             logger.info("Мы отключились от БД...");
         } catch (SQLException e) {
             logger.info(e.toString());
-
-
             return;
         }
     }

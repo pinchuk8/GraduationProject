@@ -3,9 +3,9 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-        features = {"@target/failedrerun.txt"},
+        features = {"@target/rerun.txt"},
         plugin = {"json:target/cucumber.json", "html:target/site/cucumber-pretty",
-                "rerun:target/failedrerun.txt"},
+                "rerun:target/rerun.txt"},
         glue = "steps"
 )
 

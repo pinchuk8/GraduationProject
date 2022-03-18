@@ -1,7 +1,7 @@
 package dbEntries;
 
 import core.DataBaseService;
-import org.apache.log4j.Logger;
+import org.testng.log4testng.Logger;
 
 import java.sql.ResultSet;
 
@@ -48,7 +48,7 @@ public class TaskTable {
     }
 
     public void addTask(DataBaseService dataBaseService, String summary, String description) {
-        logger.info("Добавляем запист в таблицу task");
+        logger.info("Добавляем запись в таблицу task");
 
         String insertTableSQL = "INSERT INTO public.task(" +
                 "summary, description)" +
