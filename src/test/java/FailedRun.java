@@ -3,13 +3,13 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-        features = {"src/test/resources/features"},
+        features = {"@target/failedrerun.txt"},
         plugin = {"json:target/cucumber.json", "html:target/site/cucumber-pretty",
-        "rerun:target/failedrerun.txt"},
+                "rerun:target/failedrerun.txt"},
         glue = "steps"
 )
-public class RunCucumberTest extends AbstractTestNGCucumberTests {
 
+public class FailedRun extends AbstractTestNGCucumberTests {
     @Override
     @DataProvider
     public Object[][] scenarios() {
