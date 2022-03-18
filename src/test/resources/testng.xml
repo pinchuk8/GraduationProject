@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite configfailurepolicy="skip" verbose="10" name="Suite">
+    <listeners>
+        <listener class-name="utils.NGTestListener"/>
+    </listeners>
+    <test name="Complete test run">
+        <classes>
+            <class name="RunCucumberTest"/>
+        </classes>
+    </test>
+</suite>

@@ -9,7 +9,7 @@ public class DownLoadPage extends BasePage {
     private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//input[@name='csvFile']");
 
     protected By downloadButtonSelector = By.xpath("//input[@name='csvFile']");
-    protected By nextButtonSelector = By.xpath("//button[@id='nextButton']");
+    protected By nextButtonSelector = By.xpath("//*[@id='nextButton']");
 
     @Override
     protected void openPage() {
