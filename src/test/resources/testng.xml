@@ -7,6 +7,8 @@
     <test name="Complete test run">
         <classes>
             <class name="RunCucumberTest"/>
+            <class name="FailedRun"></class>
+            <class name="FailedRun"></class>
         </classes>
     </test>
 </suite>

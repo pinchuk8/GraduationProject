@@ -80,18 +80,22 @@ public class AddTaskWindow extends BasePage {
     }
 
     public WebElement getBugTypeTask() {
+        waits.waitForVisibility(bugTypeTaskSelector);
         return driver.findElement(bugTypeTaskSelector);
     }
 
     public WebElement getImprovementTypeTask() {
+        waits.waitForVisibility(improvementTypeTaskSelector);
         return driver.findElement(improvementTypeTaskSelector);
     }
 
     public WebElement getNewFeatureTypeTask() {
+        waits.waitForVisibility(newFeatureTypeTaskSelector);
         return driver.findElement(newFeatureTypeTaskSelector);
     }
 
     public WebElement getTaskTypeTask() {
+        waits.waitForVisibility(taskTypeTaskSelector);
         return driver.findElement(taskTypeTaskSelector);
     }
 
@@ -100,22 +104,27 @@ public class AddTaskWindow extends BasePage {
     }
 
     public WebElement getHighestPriority() {
+        waits.waitForVisibility(highestPrioritySelector);
         return driver.findElement(highestPrioritySelector);
     }
 
     public WebElement getHighPriority() {
+        waits.waitForVisibility(highPrioritySelector);
         return driver.findElement(highPrioritySelector);
     }
 
     public WebElement getMediumPriority() {
+        waits.waitForVisibility(mediumPrioritySelector);
         return driver.findElement(mediumPrioritySelector);
     }
 
     public WebElement getLowPriority() {
+        waits.waitForVisibility(lowPrioritySelector);
         return driver.findElement(lowPrioritySelector);
     }
 
     public WebElement getLowestPriority() {
+        waits.waitForVisibility(lowestPrioritySelector);
         return driver.findElement(lowestPrioritySelector);
     }
 
