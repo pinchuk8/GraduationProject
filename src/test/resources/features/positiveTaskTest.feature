@@ -1,6 +1,7 @@
 Feature: positive task test
 
   Background:
+    Given set up connection
     Given browser is started
     And user logged in
 
@@ -14,7 +15,6 @@ Feature: positive task test
     Then task is not displayed
 
   Scenario: dialog window test
-    And create the task
     Then check  dialog window visibility
 
   Scenario: context message test

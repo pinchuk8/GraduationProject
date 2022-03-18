@@ -1,7 +1,10 @@
 package steps;
 
+import baseEntities.BaseTest;
 import core.BrowsersService;
+import core.DataBaseService;
 import core.ReadProperties;
+import dbEntries.TaskTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
@@ -12,6 +15,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import models.Task;
 import models.User;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -22,12 +26,21 @@ import utils.Waits;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class CucumberTestDef {
     private WebDriver driver;
     private Waits waits;
-
+    private DataBaseService dataBaseService;
     private Task addTask;
+
+    @Step
+    @Given("set up connection")
+    public void setUpConnection(){
+        org.apache.log4j.BasicConfigurator.configure();
+        dataBaseService = new DataBaseService();
+    }
 
     @Step
     @Given("browser is started")
@@ -43,19 +56,11 @@ public class CucumberTestDef {
         if (scenario.isFailed()) {
             Allure.addAttachment("Screenshot on fail", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         }
-//        try{
-//            String screenshotName = scenario.getName().replaceAll(" ", "_");
-//            if (scenario.isFailed()) {
-//                scenario.log("this is mt failure message");
-//                TakesScreenshot ts = (TakesScreenshot) driver;
-//                byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
-//                scenario.attach(screenshot, "image/png", screenshotName);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
         if (driver != null) {
             driver.quit();
+        }
+        if (dataBaseService!=null){
+            dataBaseService.closeConnection();
         }
     }
 
@@ -80,10 +85,28 @@ public class CucumberTestDef {
     @Step
     @And("create the task")
     public void createdTask() {
-        addTask = new Task.Builder()
-                .withSummary(Randomization.getRandomString(10))
-                .withDescription(Randomization.getRandomString(25))
-                .build();
+        Logger logger = Logger.getLogger(CucumberTestDef.class);
+        TaskTable descriptionTable = new TaskTable(dataBaseService);
+
+        descriptionTable.dropTable(dataBaseService);
+        descriptionTable.createTable(dataBaseService);
+        descriptionTable.addTask(dataBaseService, Randomization.getRandomString(5), "task for student");
+        ResultSet rs = descriptionTable.getAllTasks(dataBaseService);
+        try {
+            while (rs.next()) {
+                String summary = rs.getString("summary");
+                String description = rs.getString("description");
+                logger.info("summary: " + summary);
+                logger.info("description: " + description);
+                addTask = new Task.Builder()
+                        .withSummary(summary)
+                        .withDescription(description)
+                        .build();
+            }
+        } catch (
+                SQLException e) {
+            logger.error(e.toString());
+        }
         TaskStep taskStep = new TaskStep(driver);
         taskStep.addTask(addTask);
     }
