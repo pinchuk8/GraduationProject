@@ -9,8 +9,8 @@ public class ProjectTypePage extends BasePage {
     private static String ENDPOINT = "/jira/your-work";
     private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//div[@class='sc-3la0sj-2 ghEtRS']");
 
-    protected By useBagTracking_button_selector = By.xpath("//span[@aria-label='Bug tracking']");
-    protected By useTemplate_button_selector = By.xpath("//button[@class='css-goggrm']");
+    protected By useBagTrackingButtonSelector = By.xpath("//span[@aria-label='Bug tracking']");
+    protected By useTemplateButtonSelector = By.xpath("//button[@class='css-goggrm']");
 
     public ProjectTypePage(WebDriver driver) {
         super(driver);
@@ -31,11 +31,11 @@ public class ProjectTypePage extends BasePage {
     }
 
     public WebElement getBagTrackingButton() {
-        return driver.findElement(useBagTracking_button_selector);
+        return driver.findElement(useBagTrackingButtonSelector);
     }
 
     public WebElement getTemplateButton() {
-        waits.waitForVisibility(useTemplate_button_selector);
-        return driver.findElement(useTemplate_button_selector);
+        waits.waitForVisibility(useTemplateButtonSelector);
+        return driver.findElement(useTemplateButtonSelector);
     }
 }

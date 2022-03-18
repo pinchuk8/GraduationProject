@@ -82,7 +82,6 @@ public class AFEApiTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK);
     }
 
-
     @Test(dependsOnMethods = "addPetTest")
     public void getPetIdTest() {
         given()

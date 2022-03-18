@@ -9,11 +9,11 @@ public class ProjectTypePage2 extends BasePage {
     private static String ENDPOINT = "/jira/your-work";
     private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//span[@class='css-19r5em7']");
 
-    protected By projectName_field_selector = By.id("project-create.create-form.name-field.input");
-    protected By projectKey_field_selector = By.id("project-create.create-form.advanced-dropdown.key-field.input");
-    protected By projectCreate_button_selector = By.xpath("//button[@class='css-goggrm']");
-    protected By warning_messenger_selector = By.xpath("//div[@class='sc-1hvvono-1 gUyipw']");
-    protected By key_warning_messenger_selector = By.xpath("//div[contains(text(),'Project')]");
+    protected By projectNameFieldSelector = By.id("project-create.create-form.name-field.input");
+    protected By projectKeyFieldSelector = By.id("project-create.create-form.advanced-dropdown.key-field.input");
+    protected By projectCreateButtonSelector = By.xpath("//button[@class='css-goggrm']");
+    protected By warningMessengerSelector = By.xpath("//div[@class='sc-1hvvono-1 gUyipw']");
+    protected By keyWarningMessengerSelector = By.xpath("//div[contains(text(),'Project')]");
 
     public ProjectTypePage2(WebDriver driver) {
         super(driver);
@@ -34,33 +34,33 @@ public class ProjectTypePage2 extends BasePage {
     }
 
     public WebElement getProjectNameField() {
-        waits.waitForVisibility(projectName_field_selector);
-        return driver.findElement(projectName_field_selector);
+        waits.waitForVisibility(projectNameFieldSelector);
+        return driver.findElement(projectNameFieldSelector);
     }
 
     public WebElement getProjectKeyField() {
-        waits.waitForVisibility(projectKey_field_selector);
-        return driver.findElement(projectKey_field_selector);
+        waits.waitForVisibility(projectKeyFieldSelector);
+        return driver.findElement(projectKeyFieldSelector);
     }
 
     public WebElement getProjectCreateButton() {
-        waits.waitForVisibility(projectCreate_button_selector);
-        return driver.findElement(projectCreate_button_selector);
+        waits.waitForVisibility(projectCreateButtonSelector);
+        return driver.findElement(projectCreateButtonSelector);
     }
 
     public WebElement getWarningMessenger() {
-        waits.waitForVisibility(warning_messenger_selector);
-        return driver.findElement(warning_messenger_selector);
+        waits.waitForVisibility(warningMessengerSelector);
+        return driver.findElement(warningMessengerSelector);
     }
 
     public WebElement getKeyWarningMessenger() {
-        waits.waitForVisibility(key_warning_messenger_selector);
-        return driver.findElement(key_warning_messenger_selector);
+        waits.waitForVisibility(keyWarningMessengerSelector);
+        return driver.findElement(keyWarningMessengerSelector);
     }
 
     public int getWarningMessengerSize() {
-        waits.waitForVisibility(warning_messenger_selector);
-        int a = driver.findElements(warning_messenger_selector).size();
+        waits.waitForVisibility(warningMessengerSelector);
+        int a = driver.findElements(warningMessengerSelector).size();
         return a;
     }
 }

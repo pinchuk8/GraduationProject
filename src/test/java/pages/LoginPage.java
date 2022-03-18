@@ -9,9 +9,9 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends BasePage {
     private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//input[@name= 'username']");
 
-    protected By login_field_selector = By.xpath("//input[@name= 'username']");
-    protected By password_field_selector = By.xpath("//input[@name= 'password']");
-    protected By login_button_selector = By.xpath("//button[@class= 'css-siava9']");
+    protected By loginFieldSelector = By.xpath("//input[@name= 'username']");
+    protected By passwordFieldSelector = By.xpath("//input[@name= 'password']");
+    protected By loginButtonSelector = By.xpath("//button[@class= 'css-siava9']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -28,14 +28,14 @@ public class LoginPage extends BasePage {
     }
 
     public WebElement getLoginField() {
-        return driver.findElement(login_field_selector);
+        return driver.findElement(loginFieldSelector);
     }
 
     public WebElement getPasswordField() {
-        return waits.waitForVisibility(password_field_selector);
+        return waits.waitForVisibility(passwordFieldSelector);
     }
 
     public WebElement getLoginButton() {
-        return waits.waitForVisibility(login_button_selector);
+        return waits.waitForVisibility(loginButtonSelector);
     }
 }
