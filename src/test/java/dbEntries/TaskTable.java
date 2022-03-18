@@ -33,7 +33,7 @@ public class TaskTable {
         dataBaseService.executeSQL(dropTableCasesSQL);
     }
 
-    public ResultSet getAllDescriptions(DataBaseService dataBaseService) {
+    public ResultSet getAllTasks(DataBaseService dataBaseService) {
         logger.info("Получаем все записи из таблицы task");
 
         String sql = "SELECT * FROM task ORDER BY id ASC;";
@@ -41,13 +41,13 @@ public class TaskTable {
         return dataBaseService.executeQuery(sql);
     }
 
-    public ResultSet getDescriptionById(DataBaseService dataBaseService, int id) {
+    public ResultSet getTaskById(DataBaseService dataBaseService, int id) {
         String sql = "SELECT * FROM task WHERE id = " + id + ";";
 
         return dataBaseService.executeQuery(sql);
     }
 
-    public void addDescription(DataBaseService dataBaseService, String summary, String description) {
+    public void addTask(DataBaseService dataBaseService, String summary, String description) {
         logger.info("Добавляем запист в таблицу task");
 
         String insertTableSQL = "INSERT INTO public.task(" +
