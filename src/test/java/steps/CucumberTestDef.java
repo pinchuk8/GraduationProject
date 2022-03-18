@@ -23,7 +23,7 @@ import utils.Waits;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 
-public class PositiveTestDef {
+public class CucumberTestDef {
     private WebDriver driver;
     private Waits waits;
 
