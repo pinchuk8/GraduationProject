@@ -80,17 +80,14 @@ public class AddTaskWindow extends BasePage {
     }
 
     public WebElement getBugTypeTask() {
-        waits.waitForVisibility(bugTypeTaskSelector);
         return driver.findElement(bugTypeTaskSelector);
     }
 
     public WebElement getImprovementTypeTask() {
-        waits.waitForVisibility(improvementTypeTaskSelector);
         return driver.findElement(improvementTypeTaskSelector);
     }
 
     public WebElement getNewFeatureTypeTask() {
-        waits.waitForVisibility(newFeatureTypeTaskSelector);
         return driver.findElement(newFeatureTypeTaskSelector);
     }
 

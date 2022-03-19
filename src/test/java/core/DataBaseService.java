@@ -48,7 +48,8 @@ public class DataBaseService {
 
     public void executeSQL(String sql) {
         try {
-            logger.info("Результат выполнения запроса: " + getStatement().execute(sql));
+            //logger.info("Результат выполнения запроса: " + getStatement().execute(sql));
+            getStatement().execute(sql);
         } catch (SQLException e) {
             logger.info(e.toString());
         }

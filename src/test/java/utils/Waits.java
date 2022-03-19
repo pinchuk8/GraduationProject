@@ -46,6 +46,14 @@ public final class Waits {
 
         return wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
+    public WebElement waitForClickable(By by) {
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+
+        return wait.until(ExpectedConditions.elementToBeClickable(by));
+    }
 
     public WebElement waitForVisibility(By by) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)

@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
         glue = "steps"
 )
 
-public class FailedRun extends AbstractTestNGCucumberTests {
+public class SecondRunCucumberTest extends AbstractTestNGCucumberTests {
     @Override
     @DataProvider
     public Object[][] scenarios() {
