@@ -1,11 +1,12 @@
 package core;
 
-import org.testng.log4testng.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
 public class DataBaseService {
-    public static Logger logger = Logger.getLogger(DataBaseService.class);
+    private static final Logger logger = LogManager.getLogger(DataBaseService.class);
 
     static final String DB_URL = "jdbc:postgresql://ec2-52-211-158-144.eu-west-1.compute.amazonaws.com:5432/d3ljafhbss5tte";
     static final String USER = "bnoewazcwsyrjh";
