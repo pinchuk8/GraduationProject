@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import elements.Button;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,24 +27,20 @@ public class Header extends BasePage {
         return waits.waitForVisibility(PAGE_OPENED_IDENTIFIER).isDisplayed();
     }
 
-    public WebElement getProjectsButton() {
-        waits.waitForVisibility(projectsButtonSelector);
-        return driver.findElement(projectsButtonSelector);
+    public Button getProjectsButton() {
+        return new Button(driver,projectsButtonSelector);
     }
 
-    public WebElement getCreateProjectButton() {
-        waits.waitForVisibility(createProjectButtonSelector);
-        return driver.findElement(createProjectButtonSelector);
+    public Button getCreateProjectButton() {
+        return new Button(driver,createProjectButtonSelector);
     }
 
-    public WebElement getCreateButton() {
-        waits.waitForVisibility(createButtonSelector);
-        return driver.findElement(createButtonSelector);
+    public Button getCreateButton() {
+        return new Button(driver,createButtonSelector);
     }
 
     public WebElement getSearchField() {
-        waits.waitForVisibility(searchFieldSelector);
-        return driver.findElement(searchFieldSelector);
+        return  waits.waitForVisibility(searchFieldSelector);
     }
 
 }

@@ -30,13 +30,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class MainActioinsDef {
+public class MainActionsDef {
     private WebDriver driver;
     private Waits waits;
     private DataBaseService dataBaseService;
     private Task addTask;
 
-    private static final Logger logger = LogManager.getLogger(MainActioinsDef.class);
+    private static final Logger logger = LogManager.getLogger(MainActionsDef.class);
 
     @Step
     @Given("set up connection")
@@ -203,7 +203,6 @@ public class MainActioinsDef {
     @Then("uploading file and check that the file is loaded")
     public void uploadingFileAndCheckThatTheFileIsLoaded() {
         AddTaskWindow addTaskWindow = new AddTaskWindow(driver);
-        waits.waitForClickable(addTaskWindow.getImportIssues());
         addTaskWindow.getImportIssues().click();
         DownLoadPage downLoadPage = new DownLoadPage(driver);
         File file = new File("src\\test\\resources\\data\\picture.png");

@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import elements.Button;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,9 +44,8 @@ public class ProjectDataPage extends BasePage {
         return driver.findElement(projectKeyFieldSelector);
     }
 
-    public WebElement getProjectCreateButton() {
-        waits.waitForVisibility(projectCreateButtonSelector);
-        return driver.findElement(projectCreateButtonSelector);
+    public Button getProjectCreateButton() {
+        return new Button(driver,projectCreateButtonSelector);
     }
 
     public WebElement getWarningMessenger() {

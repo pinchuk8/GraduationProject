@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import elements.Button;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,13 +25,11 @@ public class DownLoadPage extends BasePage {
         super(driver);
     }
 
-    public WebElement getDownloadButton() {
-        waits.waitForVisibility(downloadButtonSelector);
-        return driver.findElement(downloadButtonSelector);
+    public Button getDownloadButton() {
+        return new Button(driver,downloadButtonSelector);
     }
 
-    public WebElement getNextButton() {
-        waits.waitForVisibility(nextButtonSelector);
-        return driver.findElement(nextButtonSelector);
+    public Button getNextButton() {
+        return new Button(driver, nextButtonSelector);
     }
 }

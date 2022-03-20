@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import elements.Button;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,12 +31,9 @@ public class ProjectTypePage extends BasePage {
         return waits.waitForVisibility(PAGE_OPENED_IDENTIFIER).isDisplayed();
     }
 
-    public WebElement getBagTrackingButton() {
-        return driver.findElement(useBagTrackingButtonSelector);
+    public Button getBagTrackingButton() {
+        return new Button(driver,useBagTrackingButtonSelector);
     }
 
-    public WebElement getTemplateButton() {
-        waits.waitForVisibility(useTemplateButtonSelector);
-        return driver.findElement(useTemplateButtonSelector);
-    }
+    public Button getTemplateButton() { return new Button(driver,useTemplateButtonSelector);}
 }

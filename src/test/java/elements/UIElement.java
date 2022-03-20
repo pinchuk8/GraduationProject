@@ -99,9 +99,7 @@ public class UIElement implements WebElement {
     }
 
     @Override
-    public boolean isDisplayed() {
-        return webElement.isDisplayed();
-    }
+    public boolean isDisplayed() {return webElement.isDisplayed();}
 
     @Override
     public Point getLocation() {

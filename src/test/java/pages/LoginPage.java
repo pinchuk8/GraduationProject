@@ -2,6 +2,7 @@ package pages;
 
 import baseEntities.BasePage;
 import core.ReadProperties;
+import elements.Button;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +34,6 @@ public class LoginPage extends BasePage {
         return waits.waitForVisibility(passwordFieldSelector);
     }
 
-    public WebElement getLoginButton() {
-        return waits.waitForVisibility(loginButtonSelector);
+    public Button getLoginButton() {return new Button(driver,loginButtonSelector);
     }
 }

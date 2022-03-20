@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import elements.Button;
 import elements.DropDown;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -46,9 +47,8 @@ public class AddTaskWindow extends BasePage {
         return waits.waitForVisibility(PAGE_OPENED_IDENTIFIER).isDisplayed();
     }
 
-    public WebElement getImportIssues() {
-        waits.waitForVisibility(import_issues_selector);
-        return driver.findElement(import_issues_selector);
+    public Button getImportIssues() {
+        return new Button(driver,import_issues_selector);
     }
 
     public WebElement getSummaryField() {
@@ -66,9 +66,8 @@ public class AddTaskWindow extends BasePage {
         return driver.findElement(descriptionFieldSelector);
     }
 
-    public WebElement getCreateButton() {
-        waits.waitForVisibility(createButtonSelector);
-        return driver.findElement(createButtonSelector);
+    public Button getCreateButton() {
+        return new Button(driver,createButtonSelector);
     }
 
     public DropDown getTypeTaskDropDown() {
