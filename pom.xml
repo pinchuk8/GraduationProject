@@ -12,8 +12,8 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <aspectj.version>1.9.6</aspectj.version>
-        <username>pinchuk759@gmail.com</username>
-        <password>19Rosales96</password>
+        <username>pinchuk759@gmail.com1</username>
+        <password>19Rosales961</password>
     </properties>
     <dependencies>
 
