@@ -30,13 +30,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class MainActioinsDef {
+public class MainActionsDef {
     private WebDriver driver;
     private Waits waits;
     private DataBaseService dataBaseService;
     private Task addTask;
 
-    private static final Logger logger = LogManager.getLogger(MainActioinsDef.class);
+    private static final Logger logger = LogManager.getLogger(MainActionsDef.class);
 
     @Step
     @Given("set up connection")
@@ -244,11 +244,19 @@ public class MainActioinsDef {
     @Then("error message is displayed")
     public void errorMessageIsDisplayed() {
         AddTaskWindow addTaskPage = new AddTaskWindow(driver);
+        Assert.assertEquals(addTaskPage.getErrorMessageField().getAttribute("innerText"),"Summary can't exceed 255 characters.");
+
+        logger.info("error message is displayed");
+    }
+    @Step
+    @And("enter invalid values")
+    public void enterInvalidValues() {
+        AddTaskWindow addTaskPage = new AddTaskWindow(driver);
         waits.waitForVisibility(addTaskPage.getSummaryField());
         addTaskPage.getSummaryField().sendKeys(Randomization.getRandomString(256));
         addTaskPage.getCreateButton().click();
-        Assert.assertTrue(addTaskPage.getErrorMessageField().isDisplayed());
 
-        logger.info("error message is displayed");
+        logger.info("enter invalid values");
+
     }
 }

@@ -47,7 +47,7 @@ public class AddTaskWindow extends BasePage {
     }
 
     public WebElement getImportIssues() {
-        waits.waitForVisibility(import_issues_selector);
+        waits.waitForClickable(import_issues_selector);
         return driver.findElement(import_issues_selector);
     }
 

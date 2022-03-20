@@ -16,4 +16,5 @@ Feature: negative test
 
   Scenario: data exceeding the allowable
     When open task window
+    And enter invalid values
     Then error message is displayed
