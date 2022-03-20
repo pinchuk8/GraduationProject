@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ProjectTypePage2 extends BasePage {
+public class ProjectDataPage extends BasePage {
     private static String ENDPOINT = "/jira/your-work";
     private static final By PAGE_OPENED_IDENTIFIER = By.xpath("//span[@class='css-19r5em7']");
 
@@ -15,11 +15,11 @@ public class ProjectTypePage2 extends BasePage {
     protected By warningMessengerSelector = By.xpath("//div[@class='sc-1hvvono-1 gUyipw']");
     protected By keyWarningMessengerSelector = By.xpath("//div[contains(text(),'Project')]");
 
-    public ProjectTypePage2(WebDriver driver) {
+    public ProjectDataPage(WebDriver driver) {
         super(driver);
     }
 
-    public ProjectTypePage2(WebDriver driver, boolean openPageByUrl) {
+    public ProjectDataPage(WebDriver driver, boolean openPageByUrl) {
         super(driver, openPageByUrl);
     }
 

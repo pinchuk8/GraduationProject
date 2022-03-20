@@ -30,13 +30,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class CucumberTestDef {
+public class MainActioinsDef {
     private WebDriver driver;
     private Waits waits;
     private DataBaseService dataBaseService;
     private Task addTask;
 
-    private static final Logger logger = LogManager.getLogger(CucumberTestDef.class);
+    private static final Logger logger = LogManager.getLogger(MainActioinsDef.class);
 
     @Step
     @Given("set up connection")
@@ -180,12 +180,12 @@ public class CucumberTestDef {
     @Step
     @Then("value is {int}")
     public void valueIs(int size) {
-        ProjectTypePage2 projectTypePage2 = new ProjectTypePage2(driver);
+        ProjectDataPage projectDataPage = new ProjectDataPage(driver);
         if (size <= 1 || size >= 81) {
-            Assert.assertTrue(projectTypePage2.getWarningMessenger().isDisplayed());
+            Assert.assertTrue(projectDataPage.getWarningMessenger().isDisplayed());
             logger.info("invalid value");
         } else {
-            Assert.assertTrue(projectTypePage2.getProjectCreateButton().isDisplayed());
+            Assert.assertTrue(projectDataPage.getProjectCreateButton().isDisplayed());
             logger.info("appropriate value");
         }
     }
@@ -225,8 +225,8 @@ public class CucumberTestDef {
     @Step
     @Then("wrong data message is displayed")
     public void wrongDataMessageIsDisplayed() {
-        ProjectTypePage2 projectTypePage2 = new ProjectTypePage2(driver);
-        Assert.assertTrue(projectTypePage2.getKeyWarningMessenger().isDisplayed());
+        ProjectDataPage projectDataPage = new ProjectDataPage(driver);
+        Assert.assertTrue(projectDataPage.getKeyWarningMessenger().isDisplayed());
 
         logger.info("wrong data message is displayed");
     }
@@ -234,8 +234,8 @@ public class CucumberTestDef {
     @Step
     @Then("defect is displayed")
     public void defectIsDisplayed() {
-        ProjectTypePage2 projectTypePage2 = new ProjectTypePage2(driver);
-        Assert.assertTrue(projectTypePage2.getProjectCreateButton().isDisplayed());
+        ProjectDataPage projectDataPage = new ProjectDataPage(driver);
+        Assert.assertTrue(projectDataPage.getProjectCreateButton().isDisplayed());
 
         logger.info("defect is displayed");
     }

@@ -27,9 +27,7 @@ public class LoginPage extends BasePage {
         return waits.waitForVisibility(PAGE_OPENED_IDENTIFIER).isDisplayed();
     }
 
-    public WebElement getLoginField() {
-        return driver.findElement(loginFieldSelector);
-    }
+    public WebElement getLoginField() {return waits.waitForVisibility(loginFieldSelector);}
 
     public WebElement getPasswordField() {
         return waits.waitForVisibility(passwordFieldSelector);

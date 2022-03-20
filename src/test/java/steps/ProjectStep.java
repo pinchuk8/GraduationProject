@@ -1,17 +1,16 @@
 package steps;
 
 import baseEntities.BaseStep;
-import models.Project;
 import org.openqa.selenium.WebDriver;
 import pages.Header;
 import pages.ProjectTypePage;
-import pages.ProjectTypePage2;
+import pages.ProjectDataPage;
 import utils.Randomization;
 
 public class ProjectStep extends BaseStep {
     private Header header;
     private ProjectTypePage projectTypePage;
-    private ProjectTypePage2 projectTypePage2;
+    private ProjectDataPage projectDataPage;
 
     public ProjectStep(WebDriver driver) {
         super(driver);
@@ -27,12 +26,12 @@ public class ProjectStep extends BaseStep {
     }
 
     public void createProjectWithLimitValue(String a) {
-        projectTypePage2 = new ProjectTypePage2(driver);
-        projectTypePage2.getProjectNameField().sendKeys(a);
+        projectDataPage = new ProjectDataPage(driver);
+        projectDataPage.getProjectNameField().sendKeys(a);
     }
 
     public void createProjectWithWrongKey() {
-        projectTypePage2 = new ProjectTypePage2(driver);
-        projectTypePage2.getProjectKeyField().sendKeys(Randomization.getRandomString(1));
+        projectDataPage = new ProjectDataPage(driver);
+        projectDataPage.getProjectKeyField().sendKeys(Randomization.getRandomString(1));
     }
 }
