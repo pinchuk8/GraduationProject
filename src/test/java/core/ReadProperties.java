@@ -16,7 +16,6 @@ public class ReadProperties {
         }
     }
 
-
     public static String getUrl() {
         return properties.getProperty("url");
     }
@@ -27,14 +26,6 @@ public class ReadProperties {
 
     public static String getBrowserName() {
         return properties.getProperty("browser");
-    }
-
-    public static String getUsername() {
-        return properties.getProperty("username");
-    }
-
-    public static String getPassword() {
-        return properties.getProperty("password");
     }
 
     public static boolean isHeadless() {

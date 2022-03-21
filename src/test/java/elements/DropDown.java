@@ -18,12 +18,4 @@ public class DropDown {
     public void click() {
         uiElement.click();
     }
-
-    public void  selectByText (String text){
-        uiElement.sendKeys();
-    }
-
-    public void selectByValue() {
-
-    }
 }
