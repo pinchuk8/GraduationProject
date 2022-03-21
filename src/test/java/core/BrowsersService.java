@@ -26,7 +26,6 @@ public class BrowsersService {
                 chromeOptions.addArguments("--disable-gpu");
                 chromeOptions.addArguments("--ignore-certificate-errors");
                 chromeOptions.addArguments("--silent");
-                // chromeOptions.addArguments("--start-maximized");
                 chromeOptions.addArguments("--kiosk");
 
                 driver = new ChromeDriver(chromeOptions);
