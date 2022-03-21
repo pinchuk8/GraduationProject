@@ -134,4 +134,8 @@ public class UIElement implements WebElement {
                 .build()
                 .perform();
     }
+
+    public void scrollIntoView(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 }

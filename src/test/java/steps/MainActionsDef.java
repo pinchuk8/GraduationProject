@@ -73,8 +73,8 @@ public class MainActionsDef {
     @When("user logged in")
     public void userLoggedIn() {
         User user = new User.Builder()
-                .withUsername(ReadProperties.getUsername())
-                .withPassword(ReadProperties.getPassword())
+                .withUsername(System.getProperty("USERNAME"))
+                .withPassword(System.getProperty("PASSWORD"))
                 .build();
         LoginStep loginStep = new LoginStep(driver);
         loginStep.login(user);
