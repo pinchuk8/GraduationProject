@@ -1,8 +1,7 @@
 # Welcom to my Graduation Project !
-###Automated system testing Jira Software
-![logotip](C:\Users\user\Desktop\logotip.png)
+### Automated system testing Jira Software
+![logotip](src/test/resources/data/logotip.png)
 # Description of the project
-___
 ___
 Jira is a commercial bug tracking system designed to organize user interaction, although in some cases it is also used for project management.
 The ability to plan agile work from project backlog to sprints.
@@ -13,8 +12,7 @@ The ability to plan agile work from project backlog to sprints.
 * Robust reporting features, ranging from burndown charts to velocity measurements.
 * Customizable workflows to fit your frameworks.
 
-#Applied frameworks:
-___
+# Applied frameworks:
 ___
 * PageObject Pattern
 * SeleniumWD
@@ -29,13 +27,13 @@ ___
 * Allure Report
 * Jenkins + SecurePassword
 
-#Checklist for testing:
+# Checklist for testing:
 ___
-___
-###UI tests:
+### UI tests:
 * 6 positive tests
 * 3 negative tests
-###API tests:
+
+### API tests:
 * GET = 1NFE + 2AFE
 * POST
 * CRUD
