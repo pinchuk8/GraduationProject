@@ -28,6 +28,7 @@ public class BrowsersService {
                 chromeOptions.addArguments("--silent");
                 chromeOptions.addArguments("--kiosk");
 
+
                 driver = new ChromeDriver(chromeOptions);
                 break;
 
